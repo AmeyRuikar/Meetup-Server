@@ -1,0 +1,53 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+- url: /
+  script: main.app
+
+- url: /createuser
+  script: insertuser.app
+- url: /syncuser
+  script: syncuser.app
+
+- url: /autocomplete
+  script: autocomplete.app
+
+- url: /getevents
+  script: getevents.app
+
+- url: /spatial
+  script: spatialquery.app
+
+- url: /updatevote
+  script: vote.app
+
+- url: /createevent
+  script: createevent.app
+
+- url: /geteta
+  script: geteta.app
+
+- url: /updateeta
+  script: updateeta.app
+
+- url: /adsense
+  script: adsense.app
+
+
+libraries:
+- name: MySQLdb
+  version: "latest"
+- name: webapp2
+  version: "2.5.2"
+
+# [START env_variables]
+env_variables:
+    CLOUDSQL_CONNECTION_NAME: meetup-server-150406:us-central1:meetup-mysql
+    CLOUDSQL_USER: root
+    CLOUDSQL_PASSWORD: root
+#
